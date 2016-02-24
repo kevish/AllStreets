@@ -2,29 +2,50 @@
 <head>
     <meta charset=utf-8 />
     <title>A simple map</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.0/mapbox.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.0/mapbox.css' rel='stylesheet' />
+    <meta name='viewport' content='initial-scale=2,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
     <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        body { margin:0; padding:0;}
+        #map { position:absolute; top:5%; bottom:0; width:100%; }
     </style>
 </head>
 <body>
+<a href="https://www.etsy.com/listing/268070105/" style="
+    font-size: 18px;
+    font-family: Verdana,sans-serif;
+    text-decoration: none;
+    color: #3887be;
+">Poster Prints</a>
+<a href="http://kevish.github.io/AllStreets/" style="
+    font-size: 18px;
+    font-family: Verdana,sans-serif;
+    float: Right;
+    text-decoration: none;
+    color: #3887be;
+">All U.S. Streets Web Map</a>
 <div id='map'></div>
 <script>
     L.mapbox.accessToken = 'pk.eyJ1Ijoia2V2cmVpbiIsImEiOiJfQ0RHX2hZIn0.hI4lNnug0mHlUQ16xX3fIg';
-    var map = L.mapbox.map('map', 'kevrein.k86jbbma')
+    var southWest = L.latLng(-57, -179),
+        northEast = L.latLng(75, 179),
+        bounds = L.latLngBounds(southWest, northEast);
+    var map = L.mapbox.map('map', 'kevrein.k86jbbma',{
+            maxBounds: bounds,
+            maxZoom: 6,
+            minZoom: 3,
+        tileLayer: {
+            detectRetina: true
+        }
+    })
 </script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-54893253-1', 'auto');
   ga('send', 'pageview');
-
 </script>
 </body>
 </html>
